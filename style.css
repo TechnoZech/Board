@@ -1,0 +1,86 @@
+* {
+	font-family: "Poppins", sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+    
+}
+
+body{
+    cursor: url(./white_pencil.png), auto;
+}
+.section {
+	height: 100vh;
+	position: relative;
+	background-color: #000000;
+	background-image: url("https://www.transparenttextures.com/patterns/axiom-pattern.png");
+	/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+    
+}
+
+.container {
+	position: relative;
+}
+
+.logo {
+	font-family: "Pacifico", cursive;
+	color: #fff;
+	position: absolute;
+	top: 50px;
+	left: 80px;
+	letter-spacing: 1px;
+	font-weight: 100;
+	font-size: 2.5rem;
+}
+
+.tool_container {
+	padding: 30px 50px;
+	display: flex;
+	border: solid 2px white;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	border-radius: 20px;
+	position: absolute;
+	left: 0;
+	right: 0;
+    top: 580px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
+    cursor: default;
+}
+
+.colors {
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+}
+
+.colors:hover {
+	cursor: pointer;
+}
+
+.clear,
+.undo {
+	font-size: 1.2rem;
+	color: #fff;
+	background-color: transparent;
+	padding: 8px 20px;
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+.clear:hover,
+.undo:hover {
+	cursor: pointer;
+	color: #000000;
+	background-color: white;
+}
+
+.input_color{
+    height: 45px;
+    width: 45px;
+    outline: none;
+
+}
