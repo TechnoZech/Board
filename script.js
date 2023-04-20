@@ -6,11 +6,17 @@ let context = canvas.getContext("2d");
 
 let getColor = document.querySelector(".tool_container");
 let current = document.querySelector(".current");
+let brushSize = document.querySelector(".input_range");
+let clear = document.querySelector(".clear");
+let undo = document.querySelector(".undo");
 
 
 let draw_color = "white";
-let draw_width = "5";
+let draw_width = "10";
 let is_drawing = false;
+
+let restore_array = [];
+let index = -1;
 
 
 //Event Listeners
@@ -22,6 +28,9 @@ canvas.addEventListener("mouseup", stop, false);
 canvas.addEventListener("touchend", stop, false);
 
 getColor.addEventListener("click", changeColor);
+brushSize.addEventListener("input", updateBrushSize);
+clear.addEventListener("click", clearCanvas);
+undo.addEventListener("click", undoCanvas);
 
 //Functions
 
@@ -51,6 +60,11 @@ function stop(e){
         is_drawing = false;
     }
     e.preventDefault();
+
+    //pushing current drawing data into an array
+    restore_array.push(context.getImageData(0,0, canvas.width, canvas.height));
+    index += 1;
+
 }
 
 let prevColor = current;
@@ -61,5 +75,26 @@ function changeColor(e){
         prevColor.classList.remove("current");
         e.target.classList.add("current"); 
         prevColor = e.target;
+    }
+}
+
+function updateBrushSize(e){
+    draw_width = e.target.value;
+}
+
+function clearCanvas(e){
+    context.clearRect(0,0, canvas.width, canvas.height);
+
+    restore_array = [];
+    index  = -1;
+}
+
+function undoCanvas(e){
+    if(index <= 0){
+        clearCanvas();
+    }else{
+        index -= 1;
+        restore_array.pop();
+        context.putImageData(restore_array[index], 0,0);
     }
 }
