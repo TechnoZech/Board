@@ -35,6 +35,8 @@ body{
 	letter-spacing: 1px;
 	font-weight: 100;
 	font-size: 2.5rem;
+	z-index: 999;
+	cursor: pointer;
 }
 
 .tool_container {
@@ -53,7 +55,7 @@ body{
 	margin-right: auto;
 	width: 800px;
     cursor: default;
-	background-color: rgb(22, 22, 22);
+	background-color: #161616;
 	z-index: 999;
 }
 
@@ -67,7 +69,7 @@ body{
 	cursor: pointer;
 }
 
-.current{
+.currentColor{
 	border: solid 3px rgb(207, 207, 207);
 }
 
@@ -92,5 +94,32 @@ body{
     height: 45px;
     width: 45px;
     outline: none;
+}
 
+.brush{
+	font-size: 1.5rem !important;
+	padding: 10px;
+}
+
+.tool{
+	padding: 10px;
+	height: 45px;
+	width: 45px;
+	color: white;
+	font-size: 2.5rem;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 2px solid #161616;
+}
+
+.tool:hover{
+	background-color: #000000;
+	border: 2px solid rgb(140, 140, 140);
+}
+
+.shapeSelected{
+	background-color: #000000;
+	border: 2px solid rgb(140, 140, 140);
 }

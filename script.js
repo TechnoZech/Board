@@ -4,16 +4,18 @@ canvas.width = window.innerWidth - 10;
 canvas.height = window.innerHeight - 10;
 let context = canvas.getContext("2d");
 
-let getColor = document.querySelector(".tool_container");
-let current = document.querySelector(".current");
+let getTool = document.querySelector(".tool_container");
+let currentColor = document.querySelector(".currentColor");
+let currentTool = document.querySelector(".shapeSelected");
 let brushSize = document.querySelector(".input_range");
 let clear = document.querySelector(".clear");
 let undo = document.querySelector(".undo");
-
+// let triangle = document.querySelector(".triangle");
 
 let draw_color = "white";
 let draw_width = "10";
 let is_drawing = false;
+let selectedTool = "brush";
 
 let restore_array = [];
 let index = -1;
@@ -27,7 +29,7 @@ canvas.addEventListener("touchmove", draw, false);
 canvas.addEventListener("mouseup", stop, false);
 canvas.addEventListener("touchend", stop, false);
 
-getColor.addEventListener("click", changeColor);
+getTool.addEventListener("click", changeTool);
 brushSize.addEventListener("input", updateBrushSize);
 clear.addEventListener("click", clearCanvas);
 undo.addEventListener("click", undoCanvas);
@@ -35,10 +37,17 @@ undo.addEventListener("click", undoCanvas);
 //Functions
 
 function start(e){
-    is_drawing = true;
-    context.beginPath();
-    context.moveTo(e.clientX, e.clientY + 35);
-    e.preventDefault();
+
+    if(selectedTool === "triangle"){
+        //need to write code for Triangle
+    }else if(selectedTool === "brush"){
+        is_drawing = true;
+        context.beginPath();
+        context.moveTo(e.clientX, e.clientY + 35);
+        e.preventDefault();
+    }
+
+    
 }
 
 function draw(e){
@@ -67,15 +76,28 @@ function stop(e){
 
 }
 
-let prevColor = current;
+let prevColor = currentColor;
+let prevTool = currentTool;
 
-function changeColor(e){
+function changeTool(e){
     if(e.target.classList == "colors"){
         draw_color = e.target.style.background;
-        prevColor.classList.remove("current");
-        e.target.classList.add("current"); 
+        prevColor.classList.remove("currentColor");
+        e.target.classList.add("currentColor"); 
         prevColor = e.target;
+    }else if(e.target.classList[0] == "triangle"){
+        selectedTool = "triangle";
+        prevTool.classList.remove("shapeSelected");
+        e.target.classList.add("shapeSelected"); 
+        prevTool = e.target;
+
+    }else if(e.target.classList[0] == "brush"){
+        selectedTool = "brush";
+        prevTool.classList.remove("shapeSelected");
+        e.target.classList.add("shapeSelected"); 
+        prevTool = e.target;
     }
+
 }
 
 function updateBrushSize(e){

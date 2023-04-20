@@ -12,7 +12,9 @@
 		/>
         <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./style.css">
-		<title>Sketchy</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+		<title>Board</title>
 	</head>
 	<body>
 		<div class="section">
@@ -21,12 +23,14 @@
                 <div class="tool_container">
                     <div class="colors" style="background: red"></div>
                     <div class="colors" style="background: blue"></div>
-                    <div class="colors current" style="background: white"></div>
+                    <div class="colors currentColor" style="background: white"></div>
 
                     <input onInput="draw_color = this.value" type="color" class="input_color">
                     <input type="range" value="10" class="input_range" min="1" max="100">
                     <button class="clear">Clear</button>
                     <button class="undo">Undo</button>
+					<i class="brush tool fa-solid fa-pen shapeSelected"></i>
+					<div class="triangle tool">△</div>
                 </div>
 				<canvas class="canvas"></canvas>
 			</div>
