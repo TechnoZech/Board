@@ -4,6 +4,10 @@ canvas.width = window.innerWidth - 10;
 canvas.height = window.innerHeight - 10;
 let context = canvas.getContext("2d");
 
+let getColor = document.querySelector(".tool_container");
+let current = document.querySelector(".current");
+
+
 let draw_color = "white";
 let draw_width = "5";
 let is_drawing = false;
@@ -16,6 +20,8 @@ canvas.addEventListener("mousemove", draw, false);
 canvas.addEventListener("touchmove", draw, false);
 canvas.addEventListener("mouseup", stop, false);
 canvas.addEventListener("touchend", stop, false);
+
+getColor.addEventListener("click", changeColor);
 
 //Functions
 
@@ -47,3 +53,13 @@ function stop(e){
     e.preventDefault();
 }
 
+let prevColor = current;
+
+function changeColor(e){
+    if(e.target.classList == "colors"){
+        draw_color = e.target.style.background;
+        prevColor.classList.remove("current");
+        e.target.classList.add("current"); 
+        prevColor = e.target;
+    }
+}

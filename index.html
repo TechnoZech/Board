@@ -21,9 +21,9 @@
                 <div class="tool_container">
                     <div class="colors" style="background: red"></div>
                     <div class="colors" style="background: blue"></div>
-                    <div class="colors" style="background: white"></div>
+                    <div class="colors current" style="background: white"></div>
 
-                    <input type="color" class="input_color">
+                    <input onInput="draw_color = this.value" type="color" class="input_color">
                     <input type="range" class="input_range" min="1" max="100">
                     <button class="clear">Clear</button>
                     <button class="undo">Undo</button>
