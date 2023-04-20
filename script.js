@@ -13,7 +13,7 @@ let undo = document.querySelector(".undo");
 // let triangle = document.querySelector(".triangle");
 
 let draw_color = "white";
-let draw_width = "10";
+let draw_width = "5";
 let is_drawing = false;
 let selectedTool = "brush";
 
